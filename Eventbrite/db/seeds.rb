@@ -11,8 +11,13 @@ u = User.create(
     first_name: "azerty",
     last_name: "Clavier",
     description: "ceci est un essaie",
-    email: "azerty-thp@yopmail.com",   
-    encrypted_password: "try" )
+    email: "azertyy-thp@yopmail.com",   
+    password: "try" )
+
+  u =  User.create(
+        first_name: "azerty",
+        email: "azertyy-thp@yopmail.com",   
+        encrypted_password: "try" )
     #email: "mourzagh.m@live.fr",
     puts "u end"
 puts "e start"
