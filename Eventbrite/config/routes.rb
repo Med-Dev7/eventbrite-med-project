@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  get 'user/show'
+  get 'user/edit'
+  get 'user/update'
   # get 'event/index'
   # get 'event/new'
   # get 'event/create'
@@ -11,6 +14,7 @@ Rails.application.routes.draw do
   devise_for :users
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   resources :event
+  resources :user, only: [:show, :edit, :update]
   root :to => "event#index"
 
   #resources :users,  only: [:show]

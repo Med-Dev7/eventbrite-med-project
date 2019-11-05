@@ -1,5 +1,7 @@
 class EventController < ApplicationController
   def index
+    @events = Event.all
+    # <p class="card-text"><%= @users_event.first_name %></p>
   end
 
   def new
@@ -9,6 +11,7 @@ class EventController < ApplicationController
   end
 
   def show
+    @event = Event.all.find(params[:id])
   end
 
   def destroy

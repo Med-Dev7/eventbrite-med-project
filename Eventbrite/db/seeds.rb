@@ -6,36 +6,38 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 require 'faker'
-puts "u start"
-u = User.create(
-    first_name: "azerty",
-    last_name: "Clavier",
-    description: "ceci est un essaie",
-    email: "azertyy-thp@yopmail.com",   
-    password: "try" )
+@name_array = ["lux","ekko",'lucian', "senna", "caitlin"]
+puts "user 5 start"
 
-  u =  User.create(
-        first_name: "azerty",
-        email: "azertyy-thp@yopmail.com",   
-        encrypted_password: "try" )
-    #email: "mourzagh.m@live.fr",
-    puts "u end"
-puts "e start"
-# time = Time.now + 3600
-# e = Event.new(
-#     start_date: Time.now,
-# )
-e = Event.create(
-    start_date: Time.now,
-    duration: 30,
-    title: "Try and succees",
-    description: "try and try and try and try and try",
-    price: 16,
-    location: "yes"
-)
-puts "e end"
-puts "a start"
-a = Attendance.create(user_id: u.id, event_id: e.id)
-puts "a end"
+5.times do |i|
+u = User.create(
+    first_name: @name_array[i],
+    last_name: Faker::Name.last_name ,
+    description: Faker::Lorem.paragraphs,   
+    password: "tryandtry",
+    email: "#{@name_array[i]}@yopmail.com",
+    event_id: rand(1..15)
+ )
+end
+ puts "Event 15 start"
+ multiple_of_5 = [0,5,10,15,20,25,30,35,40,45,50,55,60]
+ 15.times do 
+    e = Event.create(
+        start_date: Time.now,
+        duration: multiple_of_5.sample,
+        title: Faker::University.name,
+        description: Faker::Lorem.paragraphs,
+        price: Faker::Number.between(from: 1, to: 100),
+        location: Faker::Address.city,
+        user_id: rand(1..5)
+    )
+end
+
+u_all = User.all.sample.id
+e_all = Event.all.sample.id
+puts "Attendance 15 start"
+15.times do |i|
+a = Attendance.create(user_id: e_all, event_id: u_all)
+end
 
 

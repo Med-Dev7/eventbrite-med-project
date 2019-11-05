@@ -30,22 +30,13 @@
         <%= link_to "inscription", new_user_registration_path, :class => "nav-link" %>
       </li>
     </ul>
-     
-
-
     <div class="nav-item dropdown">
       <%= link_to "profil", "", :class => "nav-link dropdown-toggle", id: "navbarDropdown", role: "button", data: { toggle: "dropdown"}, aria: {haspopup: "true"}, aria: { expanded: "false"}%>
-     <!--<a class="nav-link dropdown-toggle " href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-        Dropdown
-      </a>
-     ici le commentaire a  au dessus
-     -->
-     
       <div class="dropdown-menu dropdown-menu-right"  aria-labelledby="navbarDropdown">
          <% if current_user == nil %>
           <%= link_to "Sign in", new_user_session_path, :class => "dropdown-item" %>
         <%  else %>
-          <%= link_to "profil",  root_path, :class => "dropdown-item"%>
+          <%= link_to "profil",  user_path(current_user), :class => "dropdown-item"%>
           <div class="dropdown-divider"></div>
           <%= link_to "sign out", destroy_user_session_path, :class => "dropdown-item", :method => :delete%>
          <% end %>
