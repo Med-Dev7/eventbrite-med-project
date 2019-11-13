@@ -5,7 +5,7 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-require 'faker'
+# require 'faker'
 @name_array = ["lux","ekko",'lucian', "senna", "caitlin"]
 puts "user 5 start"
 
@@ -21,7 +21,7 @@ u = User.create(
 end
  puts "Event 15 start"
  multiple_of_5 = [0,5,10,15,20,25,30,35,40,45,50,55,60]
- 15.times do 
+ 9.times do 
     e = Event.create(
         start_date: Time.now,
         duration: multiple_of_5.sample,
@@ -32,12 +32,17 @@ end
         user_id: rand(1..5)
     )
 end
-
-u_all = User.all.sample.id
-e_all = Event.all.sample.id
 puts "Attendance 15 start"
-15.times do |i|
-a = Attendance.create(user_id: e_all, event_id: u_all)
+30.times do |i|
+    puts i
+    
+    u_all = User.all.sample.id
+    e_all = Event.all.sample.id
+    a = Attendance.new(user_id: u_all, event_id: e_all)
+    unless a.save
+        u_all = User.all.sample.id
+        e_all = Event.all.sample.id
+    end
 end
 
 
